@@ -1180,7 +1180,7 @@ figure {
     padding: 7px;
 }
 
-.fa-youtube, .fa-odnoklassniki, .fa-vine {
+.fa-youtube, .fa-odnoklassniki, .fa-vk {
     z-index: 999;
     position: fixed;
     display: flex;
@@ -1216,7 +1216,7 @@ figure {
     }
 }
 
-#youtube, #odnoklassniki, #vine {
+#youtube, #odnoklassniki, #vk {
     font-size: xx-large;
 }
 
@@ -1229,12 +1229,12 @@ figure {
     }
 }
 
-.fa-vine {
+.fa-vk {
     bottom: 260px;
     padding-top: 9px;
 
     &::after {
-        background: linear-gradient(0deg, #00644b, #00b489);
+        background: linear-gradient(0deg, #304662, #45668e);
     }
 }
 
