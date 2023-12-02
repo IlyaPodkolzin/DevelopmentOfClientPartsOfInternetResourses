@@ -71,25 +71,15 @@ function showAdminPrompt() {
 }
 
 function setButtonColor(button) {
-    if (button.style.backgroundColor.includes("rgba(25, 28, 27, 0.8)")) {
-        if (button.style.color.includes("rgb(52, 76, 68)")) {
-            button.style.color = "#cde9de";
-            window.onmousemove = currentPosition => drawComet(currentPosition);
-            drawComets = false;
-            window.onclick = switchNecessityOfDrawingComet;
-        } else {
-            button.style.color = "#344c44";
-        }
-    }
-    else if (button.style.backgroundColor.includes("rgba(70, 81, 84, 0.8)")) {
-        if (button.style.color.includes("rgb(205, 233, 222)")) {
-            button.style.color = "#344c44";
-            window.onmousemove = currentPosition => drawComet(currentPosition);
-            drawComets = false;
-            window.onclick = switchNecessityOfDrawingComet;
-        } else {
-            button.style.color = "#cde9de";
-        }
+    if (button.style.color === "var(--background)") {
+        button.style.color = "var(--background_bright)";
+        button.style.backgroundColor = "var(--background)";
+        window.onmousemove = currentPosition => drawComet(currentPosition);
+        drawComets = false;
+        window.onclick = switchNecessityOfDrawingComet;
+    } else {
+        button.style.color = "var(--background)";
+        button.style.backgroundColor = "var(--background_bright)";
     }
 }
 
@@ -407,7 +397,7 @@ function addNotificationViaUser() {
 
 function chainCreator(firstFunc) {
     return function () {
-        firstFunc();
+        // firstFunc();
         notificationTimerId = setInterval(addNotification, 3000, "Не забудьте купить сувениры!");
         showNotification("OK!");
     }
@@ -570,14 +560,9 @@ for (let button of document.querySelectorAll('.primary > button')) {
     button.onclick = function () {
         setButtonColor(button);
     }
-    if (counter % 2 === 0) {
-        button.style.backgroundColor = "rgba(70, 81, 84, 0.8)";
-        button.style.color = "#cde9de"
-    }
-    else {
-        button.style.backgroundColor = "rgba(25, 28, 27, 0.8)";
-        button.style.color = "#344c44";
-    }
+
+    button.style.backgroundColor = "var(--background_bright)";
+    button.style.color = "var(--background)";
     counter++;
 }
 
