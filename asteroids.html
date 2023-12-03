@@ -1,75 +1,104 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <!-- Настройки для правильного отображения контента -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Астероиды и кометы</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <!-- Отступ основного контента от границ окна -->
-<body>
-    <div class="pictures">
-        <img src="./images/ASTEROIDD (1).jpg">
-        <img src="./images/ASTEROIDD (2).jpg">
-        <img src="./images/ASTEROIDD (3).jpg">
-        <img src="./images/ASTEROIDD (4).jpg">
-        <img src="./images/ASTEROIDD (5).jpg">
-        <img src="./images/ASTEROIDD (6).jpg">
-        <img src="./images/ASTEROIDD (7).jpg">
-        <img src="./images/ASTEROIDD (8).jpg">
-        <img src="./images/ASTEROIDD (9).jpg">
-        <img src="./images/ASTEROIDD (10).jpg">
-        <img src="./images/ASTEROIDD (11).jpg">
-        <img src="./images/ASTEROIDD (12).jpg">
-        <img src="./images/ASTEROIDD (13).jpg">
-        <img src="./images/ASTEROIDD (14).jpg">
-        <img src="./images/ASTEROIDD (15).jpg">
-        <img src="./images/ASTEROIDD (16).jpg">
-        <img src="./images/ASTEROIDD (17).jpg">
-        <img src="./images/ASTEROIDD (18).jpg">
-        <img src="./images/ASTEROIDD (19).jpg">
-        <img src="./images/ASTEROIDD (20).jpg">
-        <img src="./images/ASTEROIDD (21).jpg">
-        <img src="./images/ASTEROIDD (22).jpg">
-        <img src="./images/ASTEROIDD (23).jpg">
-        <img src="./images/ASTEROIDD (24).jpg">
-        <img src="./images/ASTEROIDD (25).jpg">
-        <img src="./images/ASTEROIDD (26).jpg">
-        <img src="./images/ASTEROIDD (27).jpg">
-        <img src="./images/ASTEROIDD (28).jpg">
-        <img src="./images/ASTEROIDD (29).jpg">
-        <img src="./images/ASTEROIDD (30).jpg">
-        <img src="./images/ASTEROIDD (31).jpg">
-        <img src="./images/ASTEROIDD (32).jpg">
-        <img src="./images/ASTEROIDD (33).jpg">
-        <img src="./images/ASTEROIDD (34).jpg">
-        <img src="./images/ASTEROIDD (35).jpg">
-        <img src="./images/ASTEROIDD (36).jpg">
-        <img src="./images/ASTEROIDD (37).jpg">
-        <img src="./images/ASTEROIDD (38).jpg">
-        <img src="./images/ASTEROIDD (39).jpg">
-        <img src="./images/ASTEROIDD (40).jpg">
-        <img src="./images/ASTEROIDD (41).jpg">
-        <img src="./images/ASTEROIDD (42).jpg">
-        <img src="./images/ASTEROIDD (43).jpg">
-        <img src="./images/ASTEROIDD (44).jpg">
-        <img src="./images/ASTEROIDD (45).jpg">
-        <img src="./images/ASTEROIDD (46).jpg">
-        <img src="./images/ASTEROIDD (47).jpg">
-        <img src="./images/ASTEROIDD (48).jpg">
-        <img src="./images/ASTEROIDD (49).jpg">
-        <img src="./images/ASTEROIDD (50).jpg">
-        <img src="./images/ASTEROIDD (51).jpg">
-        <img src="./images/ASTEROIDD (52).jpeg">
-        <img src="./images/ASTEROIDD (53).jpg">
-        <img src="./images/ASTEROIDD (54).jpg">
-        <img src="./images/ASTEROIDD (55).jpg">
-        <img src="./images/ASTEROIDD (56).jpeg">
-        <img src="./images/ASTEROIDD (57).jpg">
-        <img src="./images/ASTEROIDD (58).jpg">
-        <img src="./images/ASTEROIDD (59).jpg">
-        <img src="./images/ASTEROIDD (60).jpg">
-    </div>
+<body style="margin: 10px">
+<header style="user-select: none">
+    <img id="logo" src="./images/logo.png" alt="Логотип">
+    <h1 id="Topic1">Астероиды и Кометы</h1>
+    <input type="checkbox" id="burger"/>
+    <label for="burger">☰</label>
+    <nav id="main_nav">
+        <ul>
+            <li><a href="asteroids.html">Астероиды</a></li>
+            <li><a href="comets.html">Кометы</a></li>
+            <li><a href="scientists.html">Учёные</a></li>
+            <li><a href="researches.html">Открытия</a></li>
+            <li><a href="live.html">LIVE</a></li>
+        </ul>
+    </nav>
+
+
+    <!--    <div id="starcount">                                          СЧЁТЧИК ЗВЁЗД-->
+    <!--        <span>Звёзд на небе:</span>-->
+    <!--        <span id="stars_amount"></span>-->
+    <!--    </div>-->
+
+
+</header>
+<main>
+
+    <section>
+        <h2 id="Topic2" class="header">Введение</h2>
+
+        <article class="primary hidden_overflow">
+            <h3>Расшифровка определения</h3>
+            <img class="need_border" src="./images/asteroid.jpg" id="asteroid_termin" alt="Астероид">
+            <img class="need_border" src="./images/comet.jpg" id="comet_termin" alt="Комета">
+            <p>
+                Термин "астероид" был придуман композитором <b><a href="https://ru.wikipedia.org/wiki/Бёрни,_Чарлз">Чарлзом
+                Бёрни</a></b> и далее введён <b><a href="https://ru.wikipedia.org/wiki/Гершель,_Уильям">Уильямом
+                Гершелем</a></b>.
+                В переводе с древнегреческого этот термин означает "похожий на звезду". Ранее ввиду несовершенства
+                технологий в телескопе данные объекты отображались как звезды. До 2006 года также было распространено
+                название "малые планеты".<br><br>
+                Название "комета" было введено древнегреческим астрономом и философом <b><a
+                    href="https://ru.wikipedia.org/wiki/Аристотель">Аристотелем</a></b>. В переводе с
+                древнегреческого
+                означает "косматый", "волосатый", что отсылает на хвост, который мы обычно видим вместе с кометой.
+            </p>
+            <button type="button" class="like_button">❤</button>
+        </article>
+
+    </section>
+
+    <a href="https://www.youtube.com/channel/UCw3kC8bNBsX5AhUzncCA-1Q" class="fa fa-youtube" id="youtube"
+       aria-hidden="true"></a>
+    <a href="https://ok.ru/profile/568895492773" class="fa fa-odnoklassniki" id="odnoklassniki" aria-hidden="true"></a>
+    <a href="https://vk.com/id379264399" class="fa fa-vk" id="vk" aria-hidden="true"></a>
+
+    <input type="checkbox" id="notif"/>
+    <label for="notif">
+        <span class="material-icons">notifications</span>
+        <span class="icon-button__badge">0</span>
+
+        <ul style="position: absolute">
+            <!--            <li>Уведомление 1</li>-->
+            <!--            <li>Уведомление 2</li>-->
+            <!--            <li>Уведомление 3</li>-->
+            <!--            <li>Уведомление 4</li>-->
+        </ul>
+    </label>
+
+    <a href="#" class="to_start">⇑</a>
+
+</main>
+
+<!-- Якори -->
+<footer class="copyright" id="main_end">
+    <span><b>Астероиды и Кометы</b></span>
+    <div><a href="#" id="r_i">Вернуться в начало</a></div>
+    <address id="address">
+        <div><a href="tel:283122">Связаться с нами</a></div>
+        <div><a href="mailto:mail@gmail.com">Написать письмо</a></div>
+    </address>
+    <button class="button_SHARE" name="button_SHARE" type="button">Поделиться сайтом<span class="glitter"></span>
+    </button>
+
+    <a href="https://vk.com/id379264399" class="cross_button">IlyaMorozov, 2023-2023</a>
+</footer>
+
+<script src="script.js"></script>
 </body>
 
 </html>

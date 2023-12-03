@@ -760,15 +760,17 @@ html {
 }
 
 #main_nav ul {
-    text-align: center;
     padding: 0;
     width: 450px;
 }
 
 #main_nav li {
-    display: inline-block;
-    flex-direction: row;
-    padding: 10px;
+    display: inline-flex;
+
+    > a {
+        display: block;
+        padding: 10px;
+    }
 }
 
 #main_nav li:hover {
@@ -1514,7 +1516,7 @@ main {
         "card_end card_end card_end";
 }
 
-main section {
+main #section_main {
     background-image: url("../images/pattern_cometoid.png");
     background-repeat: repeat;
     grid-area: main_section;
