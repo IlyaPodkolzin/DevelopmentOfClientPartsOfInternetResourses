@@ -42,6 +42,7 @@ html {
 }
 
 * {
+    scroll-padding-top: 95px;
     color: var(--text);
     box-sizing: border-box;
 
@@ -983,6 +984,39 @@ img {
     overflow: hidden;
 }
 
+.scene {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    .layer {
+        position: absolute;
+        left: -10%;
+        top: 0;
+        width: 120%;
+        height: 100%;
+
+        & > img {
+            max-width: 100%;
+        }
+    }
+
+    .layer-bg {
+        background: url("../images/parallax_bg.jpg") center no-repeat;
+        background-size: cover;
+    }
+
+    .layer-1 {
+        background: url("../images/parallax_layyer2.png") center no-repeat;
+        background-size: cover;
+    }
+
+    .layer-2 {
+        background: url("../images/parallax_layyer3.png") center no-repeat;
+        background-size: cover;
+    }
+}
+
 .notification {
     z-index: 1000;
     position: fixed;
@@ -1533,8 +1567,6 @@ h3 ~ p {
 }
 
 .container {
-    background-image: url("../images/pattern_stars.png");
-    background-repeat: repeat;
     grid-area: card_end;
     display: flex;
     justify-content: center;
@@ -1543,8 +1575,8 @@ h3 ~ p {
 
     & .box {
         position: relative;
-        width: 320px;
-        height: 470px;
+        width: 350px;
+        height: 600px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -1707,6 +1739,17 @@ h3 ~ p {
         height: 65px;
         top: -45px;
         left: -10px;
+    }
+}
+
+.card_with_pic_on_side_right {
+    & :nth-child(1) {
+        z-index: -1;
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        top: -45px;
+        right: -10px;
     }
 }
 

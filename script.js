@@ -145,11 +145,11 @@ function isEmpty(obj) {
     return true;
 }
 
-function truncate(str, maxlength) {
-    if (str.length > maxlength)
-        return str.slice(0, maxlength-3) + '...';
-    return str;
-}
+// function truncate(str, maxlength) {
+//     if (str.length > maxlength)
+//         return str.slice(0, maxlength-3) + '...';
+//     return str;
+// }
 
 function checkWhatToDoNext(id) {
     if (id.includes("btnBuy")) {
@@ -420,6 +420,19 @@ function showNotification(options) {
     setTimeout(() => document.body.removeChild(newNotification), 3200);
 }
 
+function parallax(event) {
+    this.querySelectorAll('.layer').forEach(layer => {
+        let acc = layer.getAttribute('data-acceleration');
+        layer.style.transform = `translateX(${event.clientX * acc / 1000}px)`;
+    });
+}
+
+function resizeParallax() {
+    document.querySelectorAll('.scene').forEach(scene => {
+        scene.style.height = `${window.innerWidth * 0.8}px`;
+    });
+}
+
 if (min_value_input) min_value_input.onchange = function () {
 
     if (min_value_input.value != "") {
@@ -580,9 +593,9 @@ for (let buttonSell of buttonSells) {
     }
 }
 
-for (let p of document.querySelectorAll('.box > .content > p')) {
-    if (p) p.innerHTML = truncate(p.innerHTML, 70);
-}
+// for (let p of document.querySelectorAll('.box > .content > p')) {
+//     if (p) p.innerHTML = truncate(p.innerHTML, 70);
+// }
 
 function accentElements(group) {
     for (let elem of group) {
@@ -618,8 +631,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
 document.addEventListener("scroll", function (event) {
     accentElements(document.querySelectorAll("ol > li"));
+    accentElements(document.querySelectorAll("dl > dt"));
     appearSmooth();
 });
+
+document.addEventListener('mousemove', parallax);
+window.addEventListener('resize', resizeParallax);
+document.addEventListener('DOMContentLoaded', resizeParallax);
 
 if (notification_button) notification_button.onclick = function () {
     it_needs_to_stop = true;
@@ -628,8 +646,8 @@ if (notification_button) notification_button.onclick = function () {
 let notificationTimerId;
 let it_needs_to_stop = false;
 
-addNotificationViaUser = chainCreator(addNotificationViaUser);
-incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
-setTimeout(addNotificationViaUser);
+// addNotificationViaUser = chainCreator(addNotificationViaUser);
+// incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
+// setTimeout(addNotificationViaUser);
 
 debugger
