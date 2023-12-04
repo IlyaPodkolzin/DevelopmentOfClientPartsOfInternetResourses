@@ -954,8 +954,12 @@ img {
         font-size: larger;
         z-index: 2;
         position: relative;
-        padding: 1rem;
         overflow: hidden;
+
+        & a {
+            display: block;
+            padding: 1rem;
+        }
     }
 
     & div::before {
