@@ -466,7 +466,6 @@ html {
         height: 3rem;
         text-align: center;
         border-bottom-right-radius: 50%;
-        ;
         font-family: "Roboto Thin", sans-serif;
         font-weight: 900;
     }
@@ -1105,17 +1104,13 @@ figure {
     padding: 10px;
 }
 
-.secondary > figure > figcaption a {
-    ;
-}
-
 .tertiary {
     /*filter: opacity(0.7);*/
+    font-style: oblique;
     backdrop-filter: blur(3px);
     border-radius: 15px;
     background-color: var(--tertiary);
-    ;
-    padding: 7px;
+    padding: 15px;
 }
 
 .fa-youtube, .fa-odnoklassniki, .fa-vk {
@@ -1503,7 +1498,12 @@ iframe, video {
     place-self: center;
 }
 
-main {
+main section {
+    background-image: url("../images/pattern_cometoid.png");
+    background-repeat: repeat;
+}
+
+#main_main {
     column-gap: 30px;
     align-items: start;
     display: grid;
@@ -1516,9 +1516,7 @@ main {
         "card_end card_end card_end";
 }
 
-main #section_main {
-    background-image: url("../images/pattern_cometoid.png");
-    background-repeat: repeat;
+#main_main #section_main {
     grid-area: main_section;
 }
 
@@ -1697,12 +1695,89 @@ h3 ~ p {
     }
 }
 
+.card_with_pic_on_side {
+    & :nth-child(1) {
+        z-index: -1;
+        position: absolute;
+        width: 65px;
+        height: 65px;
+        top: -45px;
+        left: -10px;
+    }
+}
+
 .header {
     background-color: var(--primary_dark);
     backdrop-filter: blur(3px);
     border-radius: 15px;
     padding: 15px;
     /*opacity: 0.7;*/
+}
+
+.img_left_popup {
+    height: 300px;
+    display: grid;
+    justify-items: center;
+    align-content: space-evenly;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0 100%;
+    transition: 2s;
+
+    & img {
+        min-height: 180px;
+        opacity: 0;
+        transition: 2s;
+        border: 6px solid var(--border_dark);
+    }
+
+    &:hover {
+        grid-template-columns: 25% 75%;
+        transition: 2s;
+
+        & img {
+            opacity: 100%;
+            transition: 2s;
+        }
+    }
+}
+
+.smooth_appear {
+    display: grid;
+    align-items: center;
+    column-gap: 15px;
+    grid-template-columns: 3fr 6fr 1fr;
+    /*transform: rotate(-30deg);*/
+    backdrop-filter: blur(3px);
+    background-color: var(--card_color2_bright);
+    transition: all 1.5s ease-in-out;
+
+    & img {
+        height: initial;
+    }
+
+    & :nth-child(2) {
+        font-size: larger;
+    }
+
+    & :nth-child(3) {
+        grid-area: 1 / 3 / 2 / 4;
+        align-self: start;
+        text-transform: uppercase;
+        padding-bottom: 10px;
+        font-weight: bolder;
+        font-size: x-large;
+        writing-mode: vertical-lr;
+        transform: rotate(-180deg);
+        /*position: absolute;*/
+        top: 0;
+        right: 1em;
+    }
+
+    &:hover {
+        transition: all 1.5s ease-in-out;
+        /*transform: rotate(0);*/
+        /*translate: 0;*/
+    }
 }
 
 @keyframes square_moves {
@@ -1795,83 +1870,38 @@ h3 ~ p {
     }
 }
 
-@media (769px <= width <= 1000px) {
-    main {
-        grid-template: repeat(5, auto) / minmax(0, 1fr) minmax(0, 2fr);
+@media (width <= 1280px) {
+    fieldset {
+        grid-template-columns: 1fr;
+        row-gap: 5px;
         grid-template-areas:
-            "main_start main_start"
-            "card_left main_section"
-            "card_left main_section"
-            "card_right card_right"
-            "card_end card_end";
+        "namee"
+        "phone"
+        "mail"
+        "code"
+        "pic"
+        "send_notification"
+        "choose_truth"
+        "datee"
+        "textee"
+        "page_select"
+        "rate"
+        "captcha"
+        "subbutton";
     }
 
-    .pictures {
-        height: 960vw;
+    form input, form textarea, form select {
+        width: initial;
     }
 
-    .pictures img {
-        width: 45vw;
-    }
-}
+    .img_left_popup {
+        height: 400px;
+        grid-template-rows: 0 100%;
+        grid-template-columns: 1fr;
 
-@media (320px <= width <= 768px) {
-    .pictures {
-        height: fit-content;
-    }
-
-    .pictures img {
-        width: 100vw;
-    }
-
-    main {
-        grid-template: repeat(5, auto) / minmax(0, 1fr);
-        grid-template-areas:
-            "main_start"
-            "main_section"
-            "card_left"
-            "card_right"
-            "card_end";
-    }
-
-    #mid_pictures {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
-        ". ."
-        "img2 img3"
-        "img2 img4"
-        "img5 img7"
-        "img6 img7";
-
-        > #img1 {
-            grid-column: 1 / 3;
-            grid-row: 1 / 2;
-        }
-
-        > #img2 {
-            grid-column-start: 1;
-            grid-row: 2 / span 2;
-        }
-
-        > #img3 {
-            grid-area: 2 / 2 / span 1 / 2;
-        }
-
-        > #img4 {
-            grid-area: img4;
-        }
-
-        > #img5 {
-            grid-area: img5;
-        }
-
-        > #img6 {
-            grid-area: img6;
-        }
-
-        > #img7 {
-            grid-area: img7;
+        &:hover {
+            grid-template-columns: 1fr;
+            grid-template-rows: 50% 50%;
         }
     }
 }
@@ -1935,28 +1965,100 @@ h3 ~ p {
     }
 }
 
-@media (width <= 1280px) {
-    fieldset {
-        grid-template-columns: 1fr;
-        row-gap: 5px;
+@media (769px <= width <= 1000px) {
+    #main_main {
+        grid-template: repeat(5, auto) / minmax(0, 1fr) minmax(0, 2fr);
         grid-template-areas:
-        "namee"
-        "phone"
-        "mail"
-        "code"
-        "pic"
-        "send_notification"
-        "choose_truth"
-        "datee"
-        "textee"
-        "page_select"
-        "rate"
-        "captcha"
-        "subbutton";
+            "main_start main_start"
+            "card_left main_section"
+            "card_left main_section"
+            "card_right card_right"
+            "card_end card_end";
     }
 
-    form input, form textarea, form select {
-        width: initial;
+    .pictures {
+        height: 960vw;
+    }
+
+    .pictures img {
+        width: 45vw;
+    }
+}
+
+@media (320px <= width <= 768px) {
+    .smooth_appear {
+
+        & :nth-child(2) {
+            display: none;
+        }
+    }
+
+    .img_left_popup {
+        height: 700px;
+
+        &:hover {
+            grid-template-columns: 1fr;
+            grid-template-rows: 30% 50%;
+        }
+    }
+
+    .pictures {
+        height: fit-content;
+    }
+
+    .pictures img {
+        width: 100vw;
+    }
+
+    #main_main {
+        grid-template: repeat(5, auto) / minmax(0, 1fr);
+        grid-template-areas:
+            "main_start"
+            "main_section"
+            "card_left"
+            "card_right"
+            "card_end";
+    }
+
+    #mid_pictures {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-areas:
+        ". ."
+        "img2 img3"
+        "img2 img4"
+        "img5 img7"
+        "img6 img7";
+
+        > #img1 {
+            grid-column: 1 / 3;
+            grid-row: 1 / 2;
+        }
+
+        > #img2 {
+            grid-column-start: 1;
+            grid-row: 2 / span 2;
+        }
+
+        > #img3 {
+            grid-area: 2 / 2 / span 1 / 2;
+        }
+
+        > #img4 {
+            grid-area: img4;
+        }
+
+        > #img5 {
+            grid-area: img5;
+        }
+
+        > #img6 {
+            grid-area: img6;
+        }
+
+        > #img7 {
+            grid-area: img7;
+        }
     }
 }
 

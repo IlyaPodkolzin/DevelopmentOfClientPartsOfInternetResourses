@@ -46,11 +46,13 @@ let usual_captcha = true;
 let captcha_object = {}
 
 let submit_button = document.getElementById("subbutton");
-submit_button.style.filter = "brightness(0.8)";
+if (submit_button) submit_button.style.filter = "brightness(0.8)";
 
 let captcha_element = document.getElementById("captcha");
-captcha_element.innerHTML = createCaptcha();
-captcha_element.style.fontSize = "xx-large";
+if (captcha_element) {
+    captcha_element.innerHTML = createCaptcha();
+    captcha_element.style.fontSize = "xx-large";
+}
 
 let notification_button = document.querySelector('[for=notif]')
 let notification_list = document.querySelector('[for=notif] > ul');
@@ -418,7 +420,7 @@ function showNotification(options) {
     setTimeout(() => document.body.removeChild(newNotification), 3200);
 }
 
-min_value_input.onchange = function () {
+if (min_value_input) min_value_input.onchange = function () {
 
     if (min_value_input.value != "") {
         min_value = +min_value_input.value;
@@ -447,7 +449,7 @@ min_value_input.onchange = function () {
     }
 }
 
-max_value_input.onchange = function () {
+if (max_value_input) max_value_input.onchange = function () {
 
     if (max_value_input.value != "") {
         max_value = +max_value_input.value;
@@ -477,7 +479,7 @@ max_value_input.onchange = function () {
     }
 }
 
-document.getElementById("delete_shoplist").onclick = function () {
+if (document.getElementById("delete_shoplist")) document.getElementById("delete_shoplist").onclick = function () {
     for (let i=0; i<8; i++) {
         buy_amounts[i] = 0;
     }
@@ -495,7 +497,7 @@ document.getElementById("delete_shoplist").onclick = function () {
     sort_info.innerHTML = "(не отсортировано)";
 }
 
-sort_button.onclick = function () {
+if (sort_button) sort_button.onclick = function () {
     if (this.innerText == ">") {
         sorting_method = 1;
         sortInAscendingOrder();
@@ -510,7 +512,7 @@ sort_button.onclick = function () {
     }
 }
 
-document.getElementById("captcha_answer").onchange = function() {
+if (document.getElementById("captcha_answer")) document.getElementById("captcha_answer").onchange = function() {
 
     let captcha_text = captcha_element.innerText;
     let captcha_answer = document.getElementById("captcha_answer").value
@@ -539,7 +541,7 @@ document.getElementById("captcha_answer").onchange = function() {
 //     stars_amounter.innerHTML = accumulator.value;
 // }
 
-submit_button.onclick = function () {
+if (submit_button) submit_button.onclick = function () {
     if (isEmpty(captcha_object)) alert("Перед отправкой формы необходимо ввести капчу.");
     else if (!(captcha_object.text === captcha_object.answer && usual_captcha
         || captcha_object.answer == answer_to_equation && !usual_captcha)) {
@@ -567,22 +569,59 @@ for (let button of document.querySelectorAll('.primary > button')) {
 }
 
 for (let buttonBuy of buttonBuys) {
-    buttonBuy.onclick = function () {
+    if (buttonBuy) buttonBuy.onclick = function () {
         checkWhatToDoNext(buttonBuy.id);
     }
 }
 
 for (let buttonSell of buttonSells) {
-    buttonSell.onclick = function () {
+    if (buttonSell) buttonSell.onclick = function () {
         checkWhatToDoNext(buttonSell.id)
     }
 }
 
 for (let p of document.querySelectorAll('.box > .content > p')) {
-    p.innerHTML = truncate(p.innerHTML, 70);
+    if (p) p.innerHTML = truncate(p.innerHTML, 70);
 }
 
-notification_button.onclick = function () {
+function accentElements(group) {
+    for (let elem of group) {
+        if (elem) {
+            if (elem.getBoundingClientRect().y <= document.documentElement.clientHeight / 2) {
+                elem.style.color = "var(--accent_text)";
+            }
+            else {
+                elem.style.color = "var(--text)";
+            }
+        }
+    }
+}
+
+function appearSmooth() {
+    for (let popular_asteroid_card of document.querySelectorAll(".smooth_appear")) {
+        if (popular_asteroid_card) {
+            if (popular_asteroid_card.getBoundingClientRect().y <= 4 * document.documentElement.clientHeight / 5) {
+                popular_asteroid_card.style.translate = "0";
+                // popular_asteroid_card.style.transform = "rotate(0)";
+            } else {
+                popular_asteroid_card.style.translate = "-90%";
+                // popular_asteroid_card.style.transform = "rotate(-30deg)";
+            }
+        }
+    }
+}
+
+document.addEventListener("DOMContentLoaded", function (event) {
+    accentElements(document.querySelectorAll("ol > li"));
+    appearSmooth();
+});
+
+document.addEventListener("scroll", function (event) {
+    accentElements(document.querySelectorAll("ol > li"));
+    appearSmooth();
+});
+
+if (notification_button) notification_button.onclick = function () {
     it_needs_to_stop = true;
 }
 
