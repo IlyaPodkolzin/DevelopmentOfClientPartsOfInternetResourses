@@ -1745,18 +1745,20 @@ h3 ~ p {
     display: grid;
     align-items: center;
     column-gap: 15px;
-    grid-template-columns: 3fr 6fr 1fr;
-    /*transform: rotate(-30deg);*/
+    grid-template-columns: 27.27%  54.54% 9.09%;
     backdrop-filter: blur(3px);
     background-color: var(--card_color2_bright);
-    transition: all 1.5s ease-in-out;
+    transition: 1.5s ease-in-out;
 
-    & img {
-        height: initial;
+    & :nth-child(1) {
+        width: 200px;
+        height: 100%;
+        transition: .7s ease-in-out;
     }
 
     & :nth-child(2) {
         font-size: larger;
+        transition: 1.5s ease-in-out;
     }
 
     & :nth-child(3) {
@@ -1771,12 +1773,20 @@ h3 ~ p {
         /*position: absolute;*/
         top: 0;
         right: 1em;
+        transition: 1.5s ease-in-out;
+    }
+
+    & :nth-child(4) {
+        display: none;
+        position: absolute;
+        right: 3em;
+        top: 3em;
+        transform: scale(-0.5, 0.5);
+        transition: .3s ease-in-out;
     }
 
     &:hover {
-        transition: all 1.5s ease-in-out;
-        /*transform: rotate(0);*/
-        /*translate: 0;*/
+        transition: 1.5s ease-in-out;
     }
 }
 
@@ -1834,6 +1844,21 @@ h3 ~ p {
 
     75%, 100% {
         transform: translateY(0);
+    }
+}
+
+@keyframes appear_n_appear {
+    from {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: initial;
+    }
+
+    to {
+        opacity: 1;
     }
 }
 
@@ -1990,6 +2015,35 @@ h3 ~ p {
 
         & :nth-child(2) {
             display: none;
+            opacity: 0;
+        }
+
+        & :nth-child(4) {
+            display: initial;
+        }
+
+        &:hover {
+            background-color: #4c5a89;
+            grid-template-columns: 0 95% 0;
+
+            & :nth-child(2) {
+                display: initial;
+                opacity: 1;
+                transition: 1.5s ease-in-out;
+            }
+
+            & :nth-child(3) {
+                opacity: 0;
+                transition: 1.5s ease-in-out;
+            }
+
+            & :nth-child(1) {
+                opacity: 0;
+            }
+
+            & :nth-child(4) {
+                opacity: 0;
+            }
         }
     }
 
