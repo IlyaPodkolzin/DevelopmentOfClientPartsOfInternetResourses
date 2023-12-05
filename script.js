@@ -368,14 +368,42 @@ function checkIfIsGoodForFilter(item) {
 function addNotification(text) {
     if (text && text !== "") {
         let new_notification = document.createElement('li');
+        let delete_notification = document.createElement("button")
+
         new_notification.innerText = text;
+        delete_notification.innerHTML = "X";
+        delete_notification.style.color = "var(--text_dark)";
+
+        new_notification.style.position = "relative";
+        delete_notification.style.position = "absolute";
+
+        new_notification.appendChild(delete_notification);
+        delete_notification.style.right = "10px";
+
+        if (!it_needs_to_stop) {
+            let circle_new = document.createElement("div");
+            circle_new.style.position = "absolute";
+            circle_new.style.backgroundColor = "var(--accent_text)";
+            circle_new.style.borderRadius = "50%";
+            circle_new.style.width = "16px";
+            circle_new.style.height = "16px";
+            circle_new.style.right = "-8px";
+            circle_new.style.top = "-8px";
+            new_notification.appendChild(circle_new)
+        }
+
         notification_list.appendChild(new_notification);
+        notification_list.scrollBy(0, 50);
         /* if (!it_needs_to_stop) */ incrementNotificationCounter();
     }
 }
 
 function incrementNotificationCounter() {
     notification_counter.innerHTML++;
+}
+
+function decrementNotificationCounter() {
+    notification_counter.innerHTML--;
 }
 
 function onClickDelayer(func) {
@@ -639,15 +667,41 @@ document.addEventListener('mousemove', parallax);
 window.addEventListener('resize', resizeParallax);
 document.addEventListener('DOMContentLoaded', resizeParallax);
 
-if (notification_button) notification_button.onclick = function () {
-    it_needs_to_stop = true;
+if (notification_button) {
+
+    notification_button.onmouseover = function () {
+        it_needs_to_stop = true;
+    }
+
+    notification_button.onmouseout = function () {
+        it_needs_to_stop = false;
+    }
+}
+
+notification_list.onclick = function(event) {
+    let target = event.target;
+    if (target.tagName !== 'BUTTON' && target.tagName !== 'LI') return;
+
+    event.stopImmediatePropagation();
+    if (target.tagName === 'LI') {
+        if (target.lastElementChild.tagName === "DIV") {
+            target.removeChild(target.lastElementChild);
+            decrementNotificationCounter();
+        }
+    }
+
+    else {
+        if (target.parentElement.lastElementChild.tagName === "DIV")
+            decrementNotificationCounter();
+        target.parentElement.parentElement.removeChild(target.parentElement);
+    }
 }
 
 let notificationTimerId;
 let it_needs_to_stop = false;
 
-// addNotificationViaUser = chainCreator(addNotificationViaUser);
-// incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
-// setTimeout(addNotificationViaUser);
+addNotificationViaUser = chainCreator(addNotificationViaUser);
+incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
+setTimeout(addNotificationViaUser);
 
 debugger

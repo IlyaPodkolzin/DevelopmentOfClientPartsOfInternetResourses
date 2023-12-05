@@ -1250,7 +1250,7 @@ figure {
     transform: scaleY(1);
 }
 
-#notif:checked + [for=notif] {
+[for=notif]:hover {
 
     transform: scale(10);
     border-radius: 5%;
