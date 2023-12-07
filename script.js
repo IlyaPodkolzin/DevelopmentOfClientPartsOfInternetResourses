@@ -63,11 +63,9 @@ function showAdminPrompt() {
 
     if (adminPassword === "Я главный") {
         alert("Здравствуйте!");
-    }
-    else if (!adminPassword && adminPassword !== "") {
+    } else if (!adminPassword && adminPassword !== "") {
         alert("Отменено");
-    }
-    else {
+    } else {
         alert("Неверный пароль");
     }
 }
@@ -131,7 +129,7 @@ function createEquation() {
 function Accumulator(startingValue) {
     this.value = startingValue;
 
-    this.read = function() {
+    this.read = function () {
         this.value += +prompt("Сколько звёзд Вы увидели сегодня на небе?");
     }
 }
@@ -157,7 +155,7 @@ function checkWhatToDoNext(id) {
         if (buy_amounts[id.at(-1)] === 1)
             createBuyItem(id.at(-1));
     }
-    // else if (id.includes("btnBuy") && buy_amounts[id.at(-1)] !== 0)
+        // else if (id.includes("btnBuy") && buy_amounts[id.at(-1)] !== 0)
     //     increaseBuyItem(id.at(-1));
     else if (id.includes("btnSell")) {
         decrementCount(id.at(-1));
@@ -171,8 +169,7 @@ function checkWhatToDoNext(id) {
 
     if (sorting_method === -1) {
         sortInDescendingOrder();
-    }
-    else if (sorting_method === 1) {
+    } else if (sorting_method === 1) {
         sortInAscendingOrder();
     }
 
@@ -290,7 +287,7 @@ function removeShoplistElement(item_id) {
 }
 
 function removeAllShoplistElements() {
-    for (let i=0; i<shoplist.length;) {
+    for (let i = 0; i < shoplist.length;) {
         if (!removeShoplistElement(shoplist[i].id.at(-1))) i++;
     }
 }
@@ -299,8 +296,7 @@ function checkIfRequiredToShowShoplist() {
     if (shoplist.length !== 0) {
         empty.style.display = "none";
         shoplist_scroll.style.display = "initial";
-    }
-    else {
+    } else {
         empty.style.display = "initial";
         shoplist_scroll.style.display = "none";
     }
@@ -309,8 +305,7 @@ function checkIfRequiredToShowShoplist() {
 function updateShoplistItem(item) {
     if (shoplist.indexOf(item) === -1) {
         item.remove();
-    }
-    else {
+    } else {
         var buycount = document.getElementById("shoplist_buycount" + item.id.at(-1));
         buycount.innerHTML = "X" + buy_amounts[item.id.at(-1)];
         var buycost = document.getElementById("shoplist_buycost" + item.id.at(-1));
@@ -320,7 +315,7 @@ function updateShoplistItem(item) {
 
 function updateTotal() {
     var total_sum = 0;
-    for (let i=0; i<8; i++) {
+    for (let i = 0; i < 8; i++) {
         total_sum += +buy_amounts[i] * +buy_costs[i];
     }
     total.innerHTML = "Итого: " + total_sum + " РУБ";
@@ -394,7 +389,8 @@ function addNotification(text) {
 
         notification_list.appendChild(new_notification);
         notification_list.scrollBy(0, 50);
-        /* if (!it_needs_to_stop) */ incrementNotificationCounter();
+        /* if (!it_needs_to_stop) */
+        incrementNotificationCounter();
     }
 }
 
@@ -407,11 +403,12 @@ function decrementNotificationCounter() {
 }
 
 function onClickDelayer(func) {
-    return function() {
+    return function () {
         if (it_needs_to_stop) {
-            setTimeout(() => {it_needs_to_stop = false;}, 10000);
-        }
-        else {
+            setTimeout(() => {
+                it_needs_to_stop = false;
+            }, 10000);
+        } else {
             func();
         }
     }
@@ -465,27 +462,24 @@ if (min_value_input) min_value_input.onchange = function () {
 
     if (min_value_input.value != "") {
         min_value = +min_value_input.value;
-    }
-    else {
+    } else {
         min_value = 0;
     }
-    filtered_chooselist = chooselist.filter(function(item) {
+    filtered_chooselist = chooselist.filter(function (item) {
         return checkIfIsGoodForFilter(item);
     });
 
     for (let chooselist_item of chooselist) {
         if (!filtered_chooselist.includes(chooselist_item)) {
             chooselist_item.style.display = "none";
-        }
-        else {
+        } else {
             chooselist_item.style.display = "flex";
         }
     }
 
     if (filtered_chooselist.length === 0) {
         no_match_text.style.display = "initial";
-    }
-    else {
+    } else {
         no_match_text.style.display = "none";
     }
 }
@@ -494,11 +488,10 @@ if (max_value_input) max_value_input.onchange = function () {
 
     if (max_value_input.value != "") {
         max_value = +max_value_input.value;
-    }
-    else {
+    } else {
         max_value = 999;
     }
-    filtered_chooselist = chooselist.filter(function(item) {
+    filtered_chooselist = chooselist.filter(function (item) {
         return checkIfIsGoodForFilter(item);
 
     });
@@ -506,22 +499,20 @@ if (max_value_input) max_value_input.onchange = function () {
     for (let chooselist_item of chooselist) {
         if (!filtered_chooselist.includes(chooselist_item)) {
             chooselist_item.style.display = "none";
-        }
-        else {
+        } else {
             chooselist_item.style.display = "flex";
         }
     }
 
     if (filtered_chooselist.length === 0) {
         no_match_text.style.display = "initial";
-    }
-    else {
+    } else {
         no_match_text.style.display = "none";
     }
 }
 
 if (document.getElementById("delete_shoplist")) document.getElementById("delete_shoplist").onclick = function () {
-    for (let i=0; i<8; i++) {
+    for (let i = 0; i < 8; i++) {
         buy_amounts[i] = 0;
     }
     removeAllShoplistElements();
@@ -544,8 +535,7 @@ if (sort_button) sort_button.onclick = function () {
         sortInAscendingOrder();
         sort_info.innerHTML = "(сначала дешёвые)"
         this.innerHTML = "<";
-    }
-    else {
+    } else {
         sorting_method = -1;
         sortInDescendingOrder();
         sort_info.innerHTML = "(сначала дорогие)"
@@ -553,7 +543,7 @@ if (sort_button) sort_button.onclick = function () {
     }
 }
 
-if (document.getElementById("captcha_answer")) document.getElementById("captcha_answer").onchange = function() {
+if (document.getElementById("captcha_answer")) document.getElementById("captcha_answer").onchange = function () {
 
     let captcha_text = captcha_element.innerText;
     let captcha_answer = document.getElementById("captcha_answer").value
@@ -591,8 +581,7 @@ if (submit_button) submit_button.onclick = function () {
 
         if (usual_captcha) {
             captcha_element.innerHTML = createCaptcha();
-        }
-        else {
+        } else {
             captcha_element.innerHTML = createEquation();
         }
     }
@@ -630,8 +619,7 @@ function accentElements(group) {
         if (elem) {
             if (elem.getBoundingClientRect().y <= document.documentElement.clientHeight / 2) {
                 elem.style.color = "var(--accent_text)";
-            }
-            else {
+            } else {
                 elem.style.color = "var(--text)";
             }
         }
@@ -651,6 +639,38 @@ function appearSmooth() {
         }
     }
 }
+
+function centerElement(element_to_center, centerX, centerY) {
+    if (centerX) element_to_center.style.left = (element_to_center.parentElement.clientWidth - element_to_center.offsetWidth) / 2 + "px";
+    if (centerY) element_to_center.style.top = (element_to_center.parentElement.clientHeight - element_to_center.offsetHeight) / 2 + "px";
+}
+
+// function setMapAreaData() {
+//     if (!map) return;
+//
+//     areas = document.getElementsByTagName("area");
+//
+//     for (let i = 0; i < areas.length; i++) {
+//         coords[i] = areas[i].coords.split(',');
+//     }
+// }
+
+// function resizeMap() {
+//     if (!map) return;
+//
+//     let current_map_width = 0.9 * map.parentElement.clientWidth;
+//     let ratio = current_map_width / initial_map_width;
+//     map.style.width = current_map_width + "px";
+//
+//     for (let i = 0; i < coords.length; i++) {
+//         let newCoords = coords[i].map(function (coord) {
+//            return Math.round(coord * ratio);
+//         });
+//         areas[i].coords = newCoords.join(',');
+//     }
+//
+//     initial_map_width = current_map_width;
+// }
 
 document.addEventListener("DOMContentLoaded", function (event) {
     accentElements(document.querySelectorAll("ol > li"));
@@ -678,30 +698,57 @@ if (notification_button) {
     }
 }
 
-notification_list.onclick = function(event) {
+notification_list.onclick = function (event) {
     let target = event.target;
     if (target.tagName !== 'BUTTON' && target.tagName !== 'LI') return;
 
-    event.stopImmediatePropagation();
     if (target.tagName === 'LI') {
         if (target.lastElementChild.tagName === "DIV") {
             target.removeChild(target.lastElementChild);
             decrementNotificationCounter();
         }
-    }
-
-    else {
+    } else {
         if (target.parentElement.lastElementChild.tagName === "DIV")
             decrementNotificationCounter();
         target.parentElement.parentElement.removeChild(target.parentElement);
     }
 }
+document.querySelectorAll('.word-photo').forEach(word => {
+    let word_photo = word.firstElementChild;
+    word.onmousemove = function () {
+        if (!word_photo.classList.contains("is-visible")) {
+            word_photo.classList.add("is-visible");
+            word_photo.classList.remove("is-hidden");
+        }
+    }
 
+    word.onmouseleave = function () {
+        if (word_photo.classList.contains("is-visible")) {
+            word_photo.classList.add("is-hidden");
+            window.setTimeout(function () {
+                word_photo.classList.remove("is-visible");
+            }, 400);
+        }
+    }
+});
+
+
+// window.addEventListener("resize", resizeMap);
+
+
+// let map = document.getElementsByName('symbols')[0];
+// let coords = [];
+// let areas;
+
+let initial_map_width = 1293;
 let notificationTimerId;
 let it_needs_to_stop = false;
 
-addNotificationViaUser = chainCreator(addNotificationViaUser);
-incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
-setTimeout(addNotificationViaUser);
+debugger
+setMapAreaData();
+
+// addNotificationViaUser = chainCreator(addNotificationViaUser);
+// incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
+// setTimeout(addNotificationViaUser);
 
 debugger

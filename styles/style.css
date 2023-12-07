@@ -37,11 +37,11 @@
 
 html {
     background-color: var(--background);
-    scroll-behavior: smooth;
     /*animation: circle_rotation 43200s linear infinite;*/
 }
 
 * {
+    scroll-behavior: smooth;
     scroll-padding-top: 95px;
     color: var(--text);
     box-sizing: border-box;
@@ -353,8 +353,7 @@ html {
         flex-flow: column wrap;
         justify-content: center;
         align-items: center;
-        text-align: center;
-        ;
+        text-align: center;;
         overflow: hidden;
 
         & > img {
@@ -703,7 +702,7 @@ html {
 
 .video_with_description:hover {
     &:before {
-        transform: translateY(-114px);
+        transform: translateY(-100%);
     }
 }
 
@@ -792,8 +791,9 @@ html {
 }
 
 #map_image {
-    width: 768px;
-    height: 256px;
+    width: 1293px;
+    max-height: 900px;
+    height: 900px;
 }
 
 #notif {
@@ -968,7 +968,7 @@ img {
         position: absolute;
         content: "";
         top: 0;
-        bottom:0;
+        bottom: 0;
         right: 100%;
         left: -100%;
         border-bottom: 3px solid var(--card_color3_dark_solid);
@@ -1121,7 +1121,6 @@ img {
 }
 
 .secondary {
-    /*filter: opacity(0.7);*/
     backdrop-filter: blur(3px);
     border-radius: 15px;
     align-items: center;
@@ -1130,6 +1129,38 @@ img {
     font-size: medium;
     padding: 10px;
     width: max-content;
+}
+
+.word-photo {
+    display: inline-flex;
+    padding: 0;
+    position: relative;
+    color: var(--accent_text);
+    font-weight: bold;
+    justify-content: center;
+
+    & img {
+        max-width: 120px;
+        height: 100%;
+        display: none;
+        opacity: 0;
+        box-sizing: content-box;
+        position: absolute;
+        bottom: 100%;
+        background-color: var(--card_color3_dark_solid);
+        border-radius: 5%;
+        border: 15px solid;
+    }
+
+    & img.is-visible {
+        display: block;
+        animation: appear_n_appear .4s ease-out;
+        animation-fill-mode: forwards;
+    }
+
+    & img.is-hidden {
+        animation: disappear_n_disappear .4s ease-out;
+    }
 }
 
 figure {
@@ -1156,8 +1187,7 @@ figure {
     position: fixed;
     display: flex;
     bottom: 140px;
-    right: 20px;
-    ;
+    right: 20px;;
     background: var(--card_color3_dark_solid);
     width: 50px;
     height: 50px;
@@ -1215,8 +1245,7 @@ figure {
     display: flex;
     bottom: 20px;
     right: 20px;
-    background-color: var(--card_color3_dark_solid);
-    ;
+    background-color: var(--card_color3_dark_solid);;
     justify-content: center;
     align-items: center;
     width: 50px;
@@ -1732,24 +1761,26 @@ h3 ~ p {
 }
 
 .card_with_pic_on_side {
-    & :nth-child(1) {
+    & > :nth-child(1) {
         z-index: -1;
         position: absolute;
         width: 65px;
+        min-height: 65px;
         height: 65px;
-        top: -45px;
+        top: -25px;
         left: -10px;
     }
 }
 
 .card_with_pic_on_side_right {
-    & :nth-child(1) {
+    & > :nth-child(1) {
         z-index: -1;
         position: absolute;
         width: 65px;
+        min-height: 65px;
         height: 65px;
-        top: -45px;
-        right: -10px;
+        top: -25px;
+        right: 0;
     }
 }
 
@@ -1901,11 +1932,23 @@ h3 ~ p {
     }
 
     1% {
-        display: initial;
+        display: block;
+        opacity: 0;
     }
 
     to {
+        display: block;
         opacity: 1;
+    }
+}
+
+@keyframes disappear_n_disappear {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
     }
 }
 
@@ -2122,9 +2165,9 @@ h3 ~ p {
     }
 
     #mid_pictures {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    grid-template-areas:
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-areas:
         ". ."
         "img2 img3"
         "img2 img4"
