@@ -452,6 +452,14 @@ function parallax(event) {
     });
 }
 
+function parallaxMobile(event) {
+    const touch = event.touches[0];
+    this.querySelectorAll('.layer').forEach(layer => {
+        let acc = layer.getAttribute('data-acceleration');
+        layer.style.transform = `translateX(${touch.clientX * acc / 1000}px)`;
+    });
+}
+
 function resizeParallax() {
     document.querySelectorAll('.scene').forEach(scene => {
         scene.style.height = `${window.innerWidth * 0.8}px`;
@@ -684,7 +692,7 @@ document.addEventListener("scroll", function (event) {
 });
 
 document.addEventListener('mousemove', parallax);
-document.addEventListener('touchmove', parallax);
+document.addEventListener('touchmove', parallaxMobile);
 window.addEventListener('resize', resizeParallax);
 document.addEventListener('DOMContentLoaded', resizeParallax);
 
