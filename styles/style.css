@@ -116,6 +116,10 @@ html {
 
     & #shoplist_filter {
         margin-bottom: 15px;
+
+        & > label > input {
+            color: var(--text_dark);
+        }
     }
 }
 
@@ -370,7 +374,7 @@ html {
         justify-content: center;
         align-items: center;
         text-align: center;
-        overflow: hidden;
+        overflow: scroll;
 
         & > img {
             max-height: 10%;
