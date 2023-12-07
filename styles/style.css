@@ -1303,7 +1303,7 @@ figure {
     transform: scaleY(1);
 }
 
-[for=notif]:active {
+[for=notif]:hover {
 
     transform: scale(10);
     border-radius: 5%;
@@ -2234,7 +2234,7 @@ h3 ~ p {
 }
 
 @media (width <= 550px) {
-    [for=notif]:active {
+    [for=notif]:hover {
         transform: scale(7);
     }
 }

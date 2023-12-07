@@ -721,8 +721,8 @@ let it_needs_to_stop = false;
 debugger
 // setMapAreaData();
 
-// addNotificationViaUser = chainCreator(addNotificationViaUser);
-// incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
-// setTimeout(addNotificationViaUser);
+addNotificationViaUser = chainCreator(addNotificationViaUser);
+incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
+setTimeout(addNotificationViaUser);
 
 debugger
