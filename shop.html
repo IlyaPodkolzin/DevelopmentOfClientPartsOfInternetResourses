@@ -94,10 +94,91 @@
                         прогрессе.</p>
                 </div>
             </div>
-
-            <button type="button" class="like_button">❤</button>
         </article>
     </section>
+
+    <article class="primary" id="shoplist_article">
+        <div>
+            <h3>Сувенирный магазин</h3>
+
+            <p>Понравилось творение нейросетей? На нашем сайте у Вас есть возможность приобрести брелки с этими
+                изображениями! (Обратите внимание, что количество
+                брелков одного вида на одни руки не превышает 5.)</p>
+
+            <div id="shoplist_filter">
+                <label>Фильтр: цена от
+                    <input type="number" id="minimum_input">
+                    до
+                    <input type="number" id="maximum_input">
+                </label>
+            </div>
+
+            <div class="scroller_wrapper">
+                <span id="no_match">Ничего не найдено.</span>
+                <div class="scroller_item">
+                    <img src="./images/ast1.png" alt="АстероИд-1">
+                    <span>AстероИд-1</span>
+                    <span><b>150Р/шт</b></span>
+                    <button id="btnSell1">&#8722;</button>
+                    <button id="btnBuy1">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="./images/ast2.png" alt="АстероИд-2">
+                    <span>АстероИд-2</span>
+                    <span><b>50Р/шт</b></span>
+                    <button id="btnSell2">&#8722;</button>
+                    <button id="btnBuy2">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="./images/ast3.png" alt="АстероИд-3">
+                    <span>АстероИд-3</span>
+                    <span><b>100Р/шт</b></span>
+                    <button id="btnSell3">&#8722;</button>
+                    <button id="btnBuy3">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="./images/ast4.png" alt="АстероИд-4">
+                    <span>АстероИд-4</span>
+                    <span><b>70Р/шт</b></span>
+                    <button id="btnSell4">&#8722;</button>
+                    <button id="btnBuy4">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="images/ai_com1.png" alt="Комета-1">
+                    <span>Комета-1</span>
+                    <span><b>130Р/шт</b></span>
+                    <button id="btnSell5">&#8722;</button>
+                    <button id="btnBuy5">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="images/ai_com2.png" alt="Комета-2">
+                    <span>Комета-2</span>
+                    <span><b>200Р/шт</b></span>
+                    <button id="btnSell6">&#8722;</button>
+                    <button id="btnBuy6">&#43;</button>
+                </div>
+                <div class="scroller_item">
+                    <img src="images/ai_com3.png" alt="Комета-3">
+                    <span>Комета-3</span>
+                    <span><b>180Р/шт</b></span>
+                    <button id="btnSell7">&#8722;</button>
+                    <button id="btnBuy7">&#43;</button>
+                </div>
+            </div>
+
+            <div class="shoplist_wrapper" id="shoplist_wrapper">
+                <h2>Корзина</h2>
+                <span id="sort_info">(не отсортировано)</span>
+                <button id="delete_shoplist">🗑️</button>
+                <button id="sort_shoplist">></button>
+                <span id="empty">В корзине ничего нет.</span>
+                <span id="total">Итого: 0 руб</span>
+                <div id="shoplist_scroll"></div>
+            </div>
+
+        </div>
+
+    </article>
 
     <a href="https://www.youtube.com/channel/UCw3kC8bNBsX5AhUzncCA-1Q" class="fa fa-youtube" id="youtube"
        aria-hidden="true"></a>
@@ -120,89 +201,6 @@
     <a href="#" class="to_start">⇑</a>
 
 </main>
-
-<article class="primary" id="shoplist_article">
-    <div>
-        <h3>Сувенирный магазин</h3>
-
-        <p>Понравилось творение нейросетей? На нашем сайте у Вас есть возможность приобрести брелки с этими
-            изображениями! (Обратите внимание, что количество
-            брелков одного вида на одни руки не превышает 5.)</p>
-
-        <div id="shoplist_filter">
-            <label>Фильтр: цена от
-                <input type="number" id="minimum_input">
-                до
-                <input type="number" id="maximum_input">
-            </label>
-        </div>
-
-        <div class="scroller_wrapper">
-            <span id="no_match">Ничего не найдено.</span>
-            <div class="scroller_item">
-                <img src="./images/ast1.png" alt="АстероИд-1">
-                <span>AстероИд-1</span>
-                <span><b>150Р/шт</b></span>
-                <button id="btnSell1">&#8722;</button>
-                <button id="btnBuy1">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="./images/ast2.png" alt="АстероИд-2">
-                <span>АстероИд-2</span>
-                <span><b>50Р/шт</b></span>
-                <button id="btnSell2">&#8722;</button>
-                <button id="btnBuy2">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="./images/ast3.png" alt="АстероИд-3">
-                <span>АстероИд-3</span>
-                <span><b>100Р/шт</b></span>
-                <button id="btnSell3">&#8722;</button>
-                <button id="btnBuy3">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="./images/ast4.png" alt="АстероИд-4">
-                <span>АстероИд-4</span>
-                <span><b>70Р/шт</b></span>
-                <button id="btnSell4">&#8722;</button>
-                <button id="btnBuy4">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="images/ai_com1.png" alt="Комета-1">
-                <span>Комета-1</span>
-                <span><b>130Р/шт</b></span>
-                <button id="btnSell5">&#8722;</button>
-                <button id="btnBuy5">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="images/ai_com2.png" alt="Комета-2">
-                <span>Комета-2</span>
-                <span><b>200Р/шт</b></span>
-                <button id="btnSell6">&#8722;</button>
-                <button id="btnBuy6">&#43;</button>
-            </div>
-            <div class="scroller_item">
-                <img src="images/ai_com3.png" alt="Комета-3">
-                <span>Комета-3</span>
-                <span><b>180Р/шт</b></span>
-                <button id="btnSell7">&#8722;</button>
-                <button id="btnBuy7">&#43;</button>
-            </div>
-        </div>
-
-        <div class="shoplist_wrapper" id="shoplist_wrapper">
-            <h2>Корзина</h2>
-            <span id="sort_info">(не отсортировано)</span>
-            <button id="delete_shoplist">🗑️</button>
-            <button id="sort_shoplist">></button>
-            <span id="empty">В корзине ничего нет.</span>
-            <span id="total">Итого: 0 руб</span>
-            <div id="shoplist_scroll"></div>
-        </div>
-
-    </div>
-    <button type="button" class="like_button">❤</button>
-</article>
 
 <!-- Якори -->
 <footer class="copyright" id="main_end">

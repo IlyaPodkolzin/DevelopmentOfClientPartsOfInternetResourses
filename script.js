@@ -1,7 +1,5 @@
 "use strict";
 
-let drawComets = false;
-
 let shoplist = [];
 let chooselist = Array.from(document.getElementsByClassName("scroller_item"));
 let filtered_chooselist = chooselist.slice();
@@ -67,46 +65,6 @@ function showAdminPrompt() {
         alert("Отменено");
     } else {
         alert("Неверный пароль");
-    }
-}
-
-function setButtonColor(button) {
-    if (button.style.color === "var(--background)") {
-        button.style.color = "var(--background_bright)";
-        button.style.backgroundColor = "var(--background)";
-        window.onmousedown = currentPosition => drawComet(currentPosition);
-        window.ontouchmove = currentPosition => drawComet(currentPosition);
-        drawComets = false;
-        window.onclick = switchNecessityOfDrawingComet;
-    } else {
-        button.style.color = "var(--background)";
-        button.style.backgroundColor = "var(--background_bright)";
-    }
-}
-
-function drawComet(position) {
-    let comet = document.createElement("comet");
-
-    comet.style.position = 'absolute';
-    comet.style.left = position.pageX.toString() + "px";
-    comet.style.top = position.pageY.toString() + "px";
-    comet.innerHTML = "🌠";
-    comet.style.fontSize = "larger";
-    comet.style.zIndex = "990";
-    comet.style.pointerEvents = "none"
-
-    document.body.appendChild(comet);
-
-}
-
-function switchNecessityOfDrawingComet() {
-    if (!drawComets) {
-        drawComets = true;
-    } else {
-        window.onmousedown = null;
-        window.ontouchmove = null;
-        drawComets = false;
-        window.onclick = null;
     }
 }
 
@@ -741,6 +699,11 @@ document.querySelectorAll('.word-photo').forEach(word => {
             }, 400);
         }
     }
+});
+
+let sub_button = document.getElementById("subbutton");
+sub_button.addEventListener("click", function () {
+    showNotification("Форма отправлена!");
 });
 
 
