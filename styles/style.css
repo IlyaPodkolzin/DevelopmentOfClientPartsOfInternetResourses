@@ -1044,7 +1044,7 @@ img {
 .notification {
     z-index: 1000;
     position: fixed;
-    width: 30%;
+    width: fit-content;
     height: fit-content;
     top: 100px;
     right: 9%;

@@ -394,7 +394,7 @@ function showNotification(options) {
     let newNotification = document.createElement("div");
     newNotification.className = "notification";
     document.body.appendChild(newNotification);
-    newNotification.style.top = -document.documentElement.scrollTop + window.scrollY + window.innerHeight + 'px';
+    newNotification.style.top = document.documentElement.clientHeight + 'px';
 
     newNotification.appendChild(document.createElement("p"));
     newNotification.firstElementChild.innerHTML = "Уведомление от сайта";
