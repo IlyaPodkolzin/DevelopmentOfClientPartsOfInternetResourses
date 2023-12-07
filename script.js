@@ -684,6 +684,7 @@ document.addEventListener("scroll", function (event) {
 });
 
 document.addEventListener('mousemove', parallax);
+document.addEventListener('touchmove', parallax);
 window.addEventListener('resize', resizeParallax);
 document.addEventListener('DOMContentLoaded', resizeParallax);
 
