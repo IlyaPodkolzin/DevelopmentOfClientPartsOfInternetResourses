@@ -374,7 +374,7 @@ html {
         justify-content: center;
         align-items: center;
         text-align: center;
-        overflow: scroll;
+        overflow: hidden;
 
         & > img {
             max-height: 10%;
@@ -1845,6 +1845,7 @@ h3 ~ p {
 }
 
 .smooth_appear {
+    overflow: hidden;
     display: grid;
     align-items: center;
     column-gap: 15px;
@@ -2127,6 +2128,7 @@ h3 ~ p {
 
 @media (320px <= width <= 768px) {
     .smooth_appear {
+        height: 300px;
 
         & :nth-child(2) {
             display: none;
@@ -2232,7 +2234,7 @@ h3 ~ p {
 }
 
 @media (width <= 550px) {
-    #notif:checked + [for=notif] {
+    [for=notif]:active {
         transform: scale(7);
     }
 }

@@ -702,7 +702,7 @@ document.querySelectorAll('.word-photo').forEach(word => {
 });
 
 let sub_button = document.getElementById("subbutton");
-sub_button.addEventListener("click", function () {
+if (sub_button) sub_button.addEventListener("click", function () {
     showNotification("Форма отправлена!");
 });
 
