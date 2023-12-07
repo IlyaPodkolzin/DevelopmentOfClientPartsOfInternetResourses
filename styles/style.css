@@ -303,7 +303,21 @@ html {
     transform: scale(1);
 }
 
+/*#draw_place_div {*/
+/*    position: relative;*/
+
+/*    & > #draw_place {*/
+/*        margin-bottom: 15px;*/
+/*        position: relative;*/
+/*        width: 90%;*/
+/*        aspect-ratio: 2 / 1;*/
+/*        border: 5px solid var(--card_color2_bright_solid);*/
+/*        background-color: var(--background);*/
+/*    }*/
+/*}*/
+
 #mid_pictures {
+    margin-bottom: 15px;
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -345,19 +359,24 @@ html {
     }
 
     > div {
+        padding: 5px;
         z-index: 2;
         background-color: var(--primary_dark);
         position: relative;
         display: flex;
+        flex-wrap: wrap;
         gap: 15px;
-        flex-flow: column wrap;
         justify-content: center;
         align-items: center;
-        text-align: center;;
+        text-align: center;
         overflow: hidden;
 
         & > img {
             max-height: 10%;
+        }
+
+        & > p {
+            margin: 0;
         }
 
         &::before {
@@ -1279,7 +1298,7 @@ figure {
     transform: scaleY(1);
 }
 
-[for=notif]:active {
+[for=notif]:hover {
 
     transform: scale(10);
     border-radius: 5%;
@@ -1773,7 +1792,7 @@ h3 ~ p {
 }
 
 .card_with_pic_on_side_right {
-    & > :nth-child(1) {
+    & > :last-child {
         z-index: -1;
         position: absolute;
         width: 65px;

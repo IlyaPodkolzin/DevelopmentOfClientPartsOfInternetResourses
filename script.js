@@ -74,7 +74,7 @@ function setButtonColor(button) {
     if (button.style.color === "var(--background)") {
         button.style.color = "var(--background_bright)";
         button.style.backgroundColor = "var(--background)";
-        window.onmousemove = currentPosition => drawComet(currentPosition);
+        window.onmousedown = currentPosition => drawComet(currentPosition);
         window.ontouchmove = currentPosition => drawComet(currentPosition);
         drawComets = false;
         window.onclick = switchNecessityOfDrawingComet;
@@ -103,7 +103,7 @@ function switchNecessityOfDrawingComet() {
     if (!drawComets) {
         drawComets = true;
     } else {
-        window.onmousemove = null;
+        window.onmousedown = null;
         window.ontouchmove = null;
         drawComets = false;
         window.onclick = null;
