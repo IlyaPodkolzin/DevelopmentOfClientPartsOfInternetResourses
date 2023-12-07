@@ -1275,11 +1275,11 @@ figure {
     z-index: -1;
 }
 
-.to_start:hover::after {
+.to_start:active::after {
     transform: scaleY(1);
 }
 
-[for=notif]:hover {
+[for=notif]:active {
 
     transform: scale(10);
     border-radius: 5%;
