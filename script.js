@@ -746,7 +746,7 @@ let notificationTimerId;
 let it_needs_to_stop = false;
 
 debugger
-setMapAreaData();
+// setMapAreaData();
 
 // addNotificationViaUser = chainCreator(addNotificationViaUser);
 // incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
