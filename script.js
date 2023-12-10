@@ -394,7 +394,8 @@ function showNotification(options) {
     let newNotification = document.createElement("div");
     newNotification.className = "notification";
     document.body.appendChild(newNotification);
-    newNotification.style.top = document.documentElement.clientHeight + 'px';
+    newNotification.style.top = 0.3 * document.documentElement.clientHeight + 'px';
+    newNotification.style.left = "0";
 
     newNotification.appendChild(document.createElement("p"));
     newNotification.firstElementChild.innerHTML = "Уведомление от сайта";
@@ -578,10 +579,6 @@ for (let buttonSell of buttonSells) {
     }
 }
 
-// for (let p of document.querySelectorAll('.box > .content > p')) {
-//     if (p) p.innerHTML = truncate(p.innerHTML, 70);
-// }
-
 function accentElements(group) {
     for (let elem of group) {
         if (elem) {
@@ -612,33 +609,6 @@ function centerElement(element_to_center, centerX, centerY) {
     if (centerX) element_to_center.style.left = (element_to_center.parentElement.clientWidth - element_to_center.offsetWidth) / 2 + "px";
     if (centerY) element_to_center.style.top = (element_to_center.parentElement.clientHeight - element_to_center.offsetHeight) / 2 + "px";
 }
-
-// function setMapAreaData() {
-//     if (!map) return;
-//
-//     areas = document.getElementsByTagName("area");
-//
-//     for (let i = 0; i < areas.length; i++) {
-//         coords[i] = areas[i].coords.split(',');
-//     }
-// }
-
-// function resizeMap() {
-//     if (!map) return;
-//
-//     let current_map_width = 0.9 * map.parentElement.clientWidth;
-//     let ratio = current_map_width / initial_map_width;
-//     map.style.width = current_map_width + "px";
-//
-//     for (let i = 0; i < coords.length; i++) {
-//         let newCoords = coords[i].map(function (coord) {
-//            return Math.round(coord * ratio);
-//         });
-//         areas[i].coords = newCoords.join(',');
-//     }
-//
-//     initial_map_width = current_map_width;
-// }
 
 document.addEventListener("DOMContentLoaded", function (event) {
     accentElements(document.querySelectorAll("ol > li"));
@@ -701,10 +671,23 @@ document.querySelectorAll('.word-photo').forEach(word => {
     }
 });
 
-let sub_button = document.getElementById("subbutton");
-if (sub_button) sub_button.addEventListener("click", function () {
-    showNotification("Форма отправлена!");
+if (submit_button) submit_button.addEventListener("submit", function (event) {
+    event.preventDefault();
 });
+
+window.addEventListener("resize", function () {
+    document.querySelectorAll('#warning_COPYRIGHT').forEach(copyright => {
+        centerElement(copyright, true, false);
+    })
+});
+document.querySelectorAll('#warning_COPYRIGHT').forEach(copyright => {
+    centerElement(copyright, true, false);
+})
+
+// let sub_button = document.getElementById("subbutton");
+// if (sub_button) sub_button.addEventListener("click", function () {
+//     showNotification("Форма отправлена!");
+// });
 
 
 // window.addEventListener("resize", resizeMap);
