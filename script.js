@@ -35,15 +35,13 @@ let sorting_method = undefined;
 
 let accumulator = new Accumulator(Math.floor(Math.random() * 30));
 
-// let stars_amounter = document.getElementById("stars_amount")
-// stars_amounter.innerHTML = accumulator.value;
-
 let answer_to_equation = 13;
 
 let usual_captcha = true;
 let captcha_object = {}
 
 let submit_button = document.getElementById("subbutton");
+let submit_form = document.getElementById("form_post");
 if (submit_button) submit_button.style.filter = "brightness(0.8)";
 
 let captcha_element = document.getElementById("captcha");
@@ -103,20 +101,13 @@ function isEmpty(obj) {
     return true;
 }
 
-// function truncate(str, maxlength) {
-//     if (str.length > maxlength)
-//         return str.slice(0, maxlength-3) + '...';
-//     return str;
-// }
-
 function checkWhatToDoNext(id) {
     if (id.includes("btnBuy")) {
         incrementCount(id.at(-1));
         if (buy_amounts[id.at(-1)] === 1)
             createBuyItem(id.at(-1));
     }
-        // else if (id.includes("btnBuy") && buy_amounts[id.at(-1)] !== 0)
-    //     increaseBuyItem(id.at(-1));
+
     else if (id.includes("btnSell")) {
         decrementCount(id.at(-1));
         if (buy_amounts[id.at(-1)] === 0)
@@ -382,14 +373,6 @@ function addNotificationViaUser() {
     }
 }
 
-function chainCreator(firstFunc) {
-    return function () {
-        // firstFunc();
-        notificationTimerId = setInterval(addNotification, 3000, "Не забудьте купить сувениры!");
-        showNotification("OK!");
-    }
-}
-
 function showNotification(options) {
     let newNotification = document.createElement("div");
     newNotification.className = "notification";
@@ -528,23 +511,22 @@ if (document.getElementById("captcha_answer")) document.getElementById("captcha_
 
     if (captcha_object.text === captcha_object.answer && usual_captcha
         || captcha_object.answer == answer_to_equation && !usual_captcha) {
-        //submit_button.disabled = false;
         submit_button.style.filter = "brightness(1)";
     } else {
-        //submit_button.disabled = true;
         submit_button.style.filter = "brightness(0.8)";
     }
 }
 
-// document.getElementById("starcount").onclick = function () {
-//     accumulator.read();
-//     stars_amounter.innerHTML = accumulator.value;
-// }
+debugger
+if (submit_form) submit_form.onsubmit = function (event) {
+    event.preventDefault();
 
-if (submit_button) submit_button.onclick = function () {
-    if (isEmpty(captcha_object)) alert("Перед отправкой формы необходимо ввести капчу.");
+    if (isEmpty(captcha_object)) {
+        alert("Перед отправкой формы необходимо ввести капчу.");
+    }
     else if (!(captcha_object.text === captcha_object.answer && usual_captcha
         || captcha_object.answer == answer_to_equation && !usual_captcha)) {
+        event.preventDefault();
         alert("Капча не пройдена, попробуйте ещё раз.");
         usual_captcha = 1 - usual_captcha;
 
@@ -553,6 +535,14 @@ if (submit_button) submit_button.onclick = function () {
         } else {
             captcha_element.innerHTML = createEquation();
         }
+    }
+
+    else {
+        document.getElementById("captcha_answer").value = "";
+        captcha_object.answer = "";
+
+        submit_form.reset();
+        showNotification("Форма отправлена!");
     }
 }
 
@@ -596,10 +586,8 @@ function appearSmooth() {
         if (popular_asteroid_card) {
             if (popular_asteroid_card.getBoundingClientRect().y <= 4 * document.documentElement.clientHeight / 5) {
                 popular_asteroid_card.style.translate = "0";
-                // popular_asteroid_card.style.transform = "rotate(0)";
             } else {
                 popular_asteroid_card.style.translate = "-90%";
-                // popular_asteroid_card.style.transform = "rotate(-30deg)";
             }
         }
     }
@@ -684,28 +672,12 @@ document.querySelectorAll('#warning_COPYRIGHT').forEach(copyright => {
     centerElement(copyright, true, false);
 })
 
-// let sub_button = document.getElementById("subbutton");
-// if (sub_button) sub_button.addEventListener("click", function () {
-//     showNotification("Форма отправлена!");
-// });
-
-
-// window.addEventListener("resize", resizeMap);
-
-
-// let map = document.getElementsByName('symbols')[0];
-// let coords = [];
-// let areas;
-
-let initial_map_width = 1293;
 let notificationTimerId;
 let it_needs_to_stop = false;
 
 debugger
-// setMapAreaData();
 
-addNotificationViaUser = chainCreator(addNotificationViaUser);
+notificationTimerId = setInterval(addNotification, 5000, "Не забудьте купить сувениры!");
 incrementNotificationCounter = onClickDelayer(incrementNotificationCounter);
-setTimeout(addNotificationViaUser);
 
 debugger
